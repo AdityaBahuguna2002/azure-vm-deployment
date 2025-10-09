@@ -49,24 +49,24 @@ Before starting the deployment, ensure you have:
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│              Azure Virtual Machine                   │
-│  IP: 10.0.0.6 (Internal) | 135.235.194.44 (Public) │
+│              Azure Virtual Machine                  │
+│  IP: 10.0.0.6 (Internal) | 135.235.194.44 (Public)  │
 ├─────────────────────────────────────────────────────┤
-│                                                       │
-│  ┌──────────────┐    ┌──────────────┐              │
-│  │   Frontend   │    │   Backend    │              │
-│  │  Container   │    │  Container   │              │
-│  │   (Port 3000)│    │  (Port 8081) │              │
-│  └──────────────┘    └──────────────┘              │
-│         ↓                    ↓                       │
+│                                                     │
+│  ┌──────────────┐    ┌──────────────┐               │
+│  │   Frontend   │    │   Backend    │               │
+│  │  Container   │    │  Container   │               │
+│  │   (Port 3000)│    │  (Port 8081) │               │
+│  └──────────────┘    └──────────────┘               │
+│         ↓                    ↓                      │
 │         └────────────┬───────┘                      │
-│                      ↓                               │
-│         ┌────────────────────────┐                 │
-│         │  MySQL Database        │                 │
-│         │  (Port 3306)           │                 │
-│         │  Host Machine          │                 │
-│         └────────────────────────┘                 │
-│                                                       │
+│                      ↓                              │
+│         ┌────────────────────────┐                  │
+│         │  MySQL Database        │                  │
+│         │  (Port 3306)           │                  │
+│         │  Host Machine          │                  │
+│         └────────────────────────┘                  │
+│                                                     │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -107,13 +107,13 @@ mysql --version
 ### Step 3: Install Docker and Docker Compose
 
 ```bash
-# Install Docker using official script
+# Install Docker using the official script
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
 ```bash
-# Add current user to docker group
+# Add current user to Docker group
 sudo usermod -aG docker $USER
 newgrp docker
 ```
@@ -177,7 +177,7 @@ mysql -u root -pYourpass@123
 
 ```
 
-# In MySQL prompt, run these commands after enter:
+# In MySQL prompt, run these commands after entering:
 ```sql
 -- Create database
 CREATE DATABASE IF NOT EXISTS your_db;
@@ -219,7 +219,7 @@ sudo systemctl restart mysql
 sudo systemctl status mysql
 ```
 
-#### 4.5 Configure Firewall inside the VM or Open port from the VM's Network settings port-3306 
+#### 4.5 Configure Firewall inside the VM or Open port from the VM's Network settings, port 3306 
 
 ```bash
 # Allow MySQL port through firewall
@@ -543,7 +543,7 @@ curl -i http://135.235.194.44:8081/cynide/api/v1/health
 mysql -u yourdb_user -p -h localhost your_db
 # Password: Yourpass@123
 
-# Or from Docker container
+# Or from a Docker container
 docker exec your-backend-service mysql -h 172.17.0.1 -u yourdb_user -p your_db -e "SHOW TABLES;"
 # Password: Yourpass@123
 ```
@@ -603,7 +603,7 @@ sudo ufw allow 3306/tcp
 # Verify backend is running
 curl -i http://135.235.194.44:8081/cynide/api/v1/health
 
-# Check frontend .env has correct backend URL
+# Check frontend .env has the correct backend URL
 cat ~/prod/frontend/.env
 
 # Check firewall rules
@@ -658,7 +658,7 @@ EXIT;
 # Test with new password
 mysql -u root -pYourpass@123
 
-# Or without password via sudo
+# Or without a password via sudo
 sudo mysql -u root
 ```
 
@@ -866,7 +866,7 @@ docker container prune
 ```
 
 ```bash
-# Review and optimize database
+# Review and optimize the database
 mysql -u yourdb_user -p your_db -e "ANALYZE TABLE <table_name>;"
 ```
 
@@ -878,7 +878,7 @@ mysql -u yourdb_user -p your_db -e "ANALYZE TABLE <table_name>;"
 
 For issues or questions regarding this deployment:
 1. Check the Troubleshooting section
-2. Review logs using docker logs command
+2. Review logs using the docker logs command
 3. Verify all configuration files have correct values
 4. Ensure all prerequisites are installed and running
 
