@@ -58,7 +58,7 @@ Before starting the deployment, ensure you have:
 │  │  Container   │    │  Container   │               │
 │  │   (Port 3000)│    │  (Port 8081) │               │
 │  └──────────────┘    └──────────────┘               │
-│         ↓                                         ↓                      │
+│         ↓                    ↓                      │
 │         └────────────┬───────┘                      │
 │                      ↓                              │
 │         ┌────────────────────────┐                  │
